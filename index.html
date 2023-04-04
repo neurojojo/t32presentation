@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white_contrast_compact_verbatim_headers.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+		<style>
+			highlight {
+				text-decoration:underline;color:#e90064;
+			}
+		  .fragment.blur {
+		    filter: blur(5px);
+		  }
+		  .fragment.blur.visible {
+		    filter: none;
+		  }
+		.box {
+			width: 28%;
+		  	background-color: grey;
+		  	position: absolute;
+		  	top: -100%;
+		  	transform: translateY(-10%);
+		  	color: white;
+		  	padding: 10px;
+		  	border-radius:  12px;
+		  	background-image: linear-gradient(to bottom, #d1d1e0, #e6e6f5);
+  			color: #333;
+  			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+			text-align: center;
+			max-width: 500px;
+			margin: 0 auto;
+		}
+		p {
+			cursor: pointer;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+
+				<!-- Intro slide -->
+				<section data-auto-animate>
+					<h1>Discovering protein-protein interactions using single-molecule FRET and neural networks</h1><h2>K99 at NIGMS (submitted Oct 2022; <b>not discussed</b>)</h2><h3>Jozsef Meszaros, JD, PhD</h3><h4>In the laboratory of Jonathan Javitch</h4>
+				</section>
+
+
+				<!-- Overview slide: Science, Technology, Team -->
+				<section>
+					<!-- Science box -->
+					<div id="box_1" class="box fragment custom blur"><h2>Science</h2>
+						<p id="my-text">How 
+							<span class="fragment highlight-current-red">interactions</span> among cell 
+							<span class="fragment highlight-current-red">membrane proteins</span> are mediated by and depend on <span class="fragment highlight-current-red">physicochemical properties of proteins</span> and presence of <span class="fragment highlight-current-red">membrane components</span>, initially examining <span class="fragment highlight-current-red">synthetic protein segments</span> and eventually including <span class="fragment highlight-current-red">chemokine receptors</span></p>
+					</div>
+					<!-- Techniques box -->
+					<div id="box_2" class="box fragment custom blur"><h2>Techniques</h2>
+						<p id="my-text">
+							<span class="fragment highlight-current-red">Single-molecule imaging</span> combined with simultaneous recording of <span class="fragment highlight-current-red">fluorescence resonance energy transfer</span> (smFRET) between pairs of molecules to collect data about protein movement through the membrane and interactions among proteins, to be analyzed using <span class="fragment highlight-current-red">statiscal models and neural networks</span></p></div>
+					<!-- Team box -->
+					<div id="box_3" class="box fragment custom blur"><h2>Team</h2>
+						<p id="my-text">
+							<p class="fragment highlight-current-red"><b>Dr. Jonathan Javitch</b>: Protein and cell biology, smFRET</p>
+							<p class="fragment highlight-current-red"><b>Dr. Ilya Levental</b> (UVA): Membrane biophysics</p>
+							<p class="fragment highlight-current-red"><b>Dr. Purushottam Dixit</b> (UFL): Statistical modeling</p>
+							<p class="fragment highlight-current-red"><b>Dr. Tracy Handel</b> (UCSD): Chemokine protein biology and immunology</p>
+						</p></div>
+				</section>
+
+				<!-- Hypothesis section -->
+				<section data-auto-animate>
+				<div><h2><b>Hypothesis:</b> protein-protein
+interactions among freely diffusing transmembrane proteins are determined by the <span class="fragment highlight-current-red">physicochemical qualities of a protein</span> and its <span class="fragment highlight-current-red">interaction with membrane components</span></h2></div>
+				</section>
+
+				<section data-auto-animate>
+				<div><h2><b>Hypothesis:</b> protein-protein
+interactions among freely diffusing transmembrane proteins are determined by the physicochemical qualities of a protein and its interaction with membrane components</h2></div>
+				<div style="padding-top:5%"><h3>Proteins with certain physicochemical properties will have a higher propensity to enter liquid-ordered membrane microdomains, where they are more likely to interact</h3></div>
+				</section>
+
+				<section data-auto-animate>
+				<div><h2><b>Hypothesis:</b> protein-protein
+interactions among freely diffusing transmembrane proteins are determined by the physicochemical qualities of a protein and its interaction with membrane components</h2></div>
+				<div style="padding-top:5%"><h3>Proteins with certain physicochemical properties will have a higher propensity to enter liquid-ordered membrane microdomains, where they are more likely to interact</h3></div>
+				</section>
+
+				<section data-auto-animate>
+				<div><h2><b>Hypothesis:</b> protein-protein
+interactions among freely diffusing transmembrane proteins are determined by the <highlight>physicochemical qualities of a protein</highlight> and its interaction with membrane components</h2></div>
+				<div style="padding-top:5%"><h3>Proteins with certain physicochemical properties will have a higher propensity to enter <highlight>liquid-ordered membrane microdomains</highlight>, where they are more likely to interact</h3></div>
+				<div style="padding-top:5%"><h4><b>Physicochemical properties of a protein</b></h4>surface area, protein length, and presence of amino acids that can be palmitoylated</div>
+				<div style="padding-top:5%"><h4><b>Liquid-ordered membrane microdomains</b></h4>areas of the cell membrane enriched in sphingolipids and cholesterol</div>
+				</section>
+
+				<!-- Specific aims -->
+				<section data-auto-animate>
+					<h1><b>Specific Aims</b></h1>
+				</section> 
+				<section data-auto-animate>
+					<h1>Specific Aims</h1>
+					<h2><b>Aim 1:</b> for a set of protein segments, examine whether protein affinity for membrane microdomains relates to probability of interaction</h2>
+				</section> 
+				<section data-auto-animate>
+					<h1>Specific Aims</h1>
+					<h2><b>Aim 1:</b> for a set of protein segments, examine whether protein affinity for membrane microdomains relates to probability of interaction</h2>
+					<h2><b>Aim 2:</b> modify membranes and protein segments, then model the results using statistical inference and neural networks</h2>
+				</section> 
+				<section data-auto-animate>
+					<h1>Specific Aims</h1>
+					<h2><b>Aim 1:</b> for a set of protein segments, examine whether protein affinity for membrane microdomains relates to probability of interaction</h2>
+					<h2><b>Aim 2:</b> modify membranes and protein segments, then model the results using statistical inference and neural networks</h2>
+					<h2><b>Aim 3:</b> extend studies to include chemokine receptors</h2>
+				</section>
+
+				<!-- Aim 1 section -->
+				<section data-transition="zoom" data-auto-animate>
+					<div style="margin-top:-20%">
+						<h1>Aim 1</h1>
+						<h3 class="fragment" id="listToggle_1" onclick="toggleList('myList_1')">Generate cell lines to express transmembrane protein segments</h3>
+							<div style="padding-left:5%;">
+							  	<ul id="myList_1" style="display: none">
+								  	<li class="fragment"><subdetail>Six model single-pass membrane proteins</subdetail></li>
+								  	<li class="fragment"><subdetail>Stable CHO cell lines expressing SNAP-tagged proteins</subdetail></li>
+								  	<li class="fragment"><subdetail>LEx-FITR CHO cells, which allow low expression under tetracycline control</subdetail></li>
+							  </ul>
+							</div>
+
+						<h3 class="fragment" id="listToggle_2" onclick="toggleList('myList_2')">Image isolated plasma membrane vesicles (PMVs) from the cell lines to measure protein localization into lipid domains</h3>
+						
+							<div style="padding-left:5%">
+						  		<ul id="myList_2" style="display: none">
+							  		<li class="fragment"><subdetail>Live stain liquid-ordered and liquid-disordered areas of the membrane (rhoPE or DiO); image using a standard inverted epifluorescence microscope</subdetail></li>
+							  		<li class="fragment"><subdetail>Stain proteins using compatible dyes</subdetail></li>
+							  		<li class="fragment"><subdetail>Correlate protein dye with membrane dye</subdetail></li>
+						  		</ul>
+							</div>
+
+						<h3 class="fragment" id="listToggle_3" onclick="toggleList('myList_3')">Total internal reflection microscopy imaging to perform smFRET</h3>
+
+							<div style="padding-left:5%">
+						  		<ul id="myList_3" style="display: none">
+									<li class="fragment"><subdetail>Dyes: Lumidyne 555 (LD555) and 655 (LD655)</subdetail></li>
+									<li class="fragment"><subdetail>Laser: a 532-nm (Torus 150 mW, Laser Quantum) and 640-nm (Cell Laser 100 mW, Olympus)</subdetail></li>
+									<li class="fragment"><subdetail>Camera: Evolve 512, Photometrics</subdetail></li>
+									<li class="fragment"><subdetail>Frame rate: 67 Hz (1 frame per 15 ms)</subdetail></li>
+									<li class="fragment"><subdetail>Imaging duration: 1 min</subdetail></li>
+									<li class="fragment"><subdetail>Image 4-5 cells per coverslip, two coverslips, 10 cells total</subdetail></li>
+									<li class="fragment"><subdetail>Only cell in focus is illuminated by evanescent TIRF field (not direct laser excitation)</subdetail></li>
+							  	</ul>
+							</div>
+					</div>
+				</section>
+
+				<section>
+					<div>
+					<img src="img\k99figure_for_presentation.PNG" style="height:600px">
+					</div>
+				</section>
+
+				<!-- Aim 1 TIRF expanded -->
+				<section data-transition="zoom">
+					<h1>Aim 1 (obstacles)</h1>
+					<h2>Diffusing too fast to separate diffusion states</h2>
+					<p>Optimize system to enable faster imaging</p>
+					<h2>Proteins not interacting leads to no FRET</h2>
+					<p>Modify proteins by adding palmitoylation sites</p>
+					<p>Higher expression</p>
+					<p>Different proteins</p>
+				</section>
+
+				<!-- Aim 1 section w Expected results -->
+				<section data-transition="zoom" data-auto-animate>
+					<div>
+						<h2><b>Expected result:</b> Proteins with hydrophobic residues and/or palmitoylation sites will partition into liquid-ordered areas of PMV; produce FRET events</h2>
+					</div>
+				</section>
+
+				<!-- Aim 2 section -->
+				<section data-transition="zoom" data-auto-animate>
+					<div>
+						<h1>Aim 2</h1>
+						<h3 class="fragment" id="listToggle_4" onclick="toggleList('myList_4')">Modifying membranes to alter distribution of liquid-ordered microdomains</short></h3>
+							<div style="padding-left:5%;">
+							  	<ul id="myList_4" style="display: none">
+								  	<li class="fragment"><subdetail>5mM MBCD loaded with 100nM cholesterol</subdetail></li>
+								  	<li class="fragment"><subdetail>1mM deoxycholic acid</subdetail></li>
+								  	<li class="fragment"><subdetail>fewer smFRET detections when rafts are disrupted, more when rafts enhanced</subdetail></li>
+							  </ul>
+							</div>
+
+						<h3 class="fragment" id="listToggle_5" onclick="toggleList('myList_5')">Modifying proteins to alter propensity to enter lipid microdomains</h3>
+						
+							<div style="padding-left:5%">
+						  		<ul id="myList_5" style="display: none">
+							  		<li class="fragment"><subdetail>adding or mutating cysteine residues where palmitoylation of a protein could occur</subdetail></li>
+							  		<li class="fragment"><subdetail>truncate transmembrane domains</subdetail></li>
+							  		<li class="fragment"><subdetail>protein modifications that decrease propensity for membrane microdomains will lead to fewer smFRET events</subdetail></li>
+						  		</ul>
+							</div>
+
+						<h3 class="fragment" id="listToggle_6" onclick="toggleList('myList_6')">Total internal reflection microscopy imaging to perform smFRET</h3>
+						<div style="padding-left:5%">
+						<ul id="myList_6" style="display: none"><li>with either fluorescent cholesterol and/or membrane dyes to capture information about membrane composition dynamically</li></ul></div>
+
+					</div>
+				</section>
+
+				<!-- Aim 3 section -->
+				<section>
+				<h2>Aim 3</h2>
+				<h3>Determining how chemokine receptor interactions are modulated by membrane microdomains</h3>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+
+		</script>
+		<script>
+			$(document).ready(function() {
+			  
+
+			  $("#box_1").animate({
+			    left: "0"
+			  }, 1000);
+			  $("#box_2").animate({
+			    left: "33%"
+			  }, 2000);
+			  $("#box_3").animate({
+			    left: "66%"
+			  }, 3000);
+			  
+			}); // End of ready function scripts
+		</script>
+		<script>
+
+			function toggleList(list_) {
+			  var list = document.getElementById(list_);
+			  if (list.style.display === "none") {
+			    list.style.display = "block";
+			  } else {
+			    list.style.display = "none";
+			  }
+			}
+			
+		</script>
+
+	</body>
+</html>
+
+
+<!-- Extra stuff -->
+<!-- Aim 1 TIRF expanded -->
+<!-- <section data-transition="zoom">
+	<h1>Aim 1 (TIRF imaging smFRET)</h1>
+<table>
+	<tr>
+		<td>
+			<p><result>Measure diffusion coefficients and FRET states, transitions between diffusion and FRET states, relationships between, relate them to locations in the cell membranes</p>
+			<p><expectation>Liquid-ordered phase prefering will transition to slower diffusion in putative rafts, FRET state will transition in conjunction with diffusion state transition, mobility and size of liquid-ordered phase domain computed</expectation></p>
+			<p><expectation>Diffusion of the protein would switch into a slower state prior to an smFRET event, indicating that the protein must enter a membrane area where its movement is constrained before engaging in protein-protein interactions</expectation></p>
+			<p><expectation>estimate microdomain density, spatial
+			distribution, microdomain size, microdomain diffusion rate, or protein-protein interactions</expectation></result></p></td><td>Other things</td>
+	</tr>
+</table>
+</section> -->
